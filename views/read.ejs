@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>All Users </title>
+</head>
+<body class="bg-zinc-900">
+  
+  <div class="w-full h-full  p-10 text-white">
+    <div class="flex justify-center items-center h-10 mt-10 ">
+      <h1 class="text-7xl tracking-tighter mb-3 font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent shadow-md break-words"> Mongo Administrator App </h1>
+    </div>
+    <div class="nav mb-10 mt-10 text-2xl" style="text-align: center;">
+      <a class="text-blue-500 underline" href="/"> Back to Home</a>
+  </div>
+    <h1 class="text-3xl tracking-tighter mb-3">All Users :</h1>
+    <div class="users flex gap-3 flex-wrap">
+
+      <% if(users.length > 0){ %>
+
+        <% users.forEach(function(user){ %>
+
+          <div class="user  w-72 p-4 bg-zinc-800 rounded-lg">
+            <div class="w-full h-72 bg-zinc-300"> 
+              <img class="w-full h-full object-cover overflow-hidden  object-center" src="<%= user.image %> " alt="user image">
+            </div>
+            <h3 class="text-xl tracking-tighter mt-3"> <%= user.name %></h3>
+            <h5 class="text-zinc-500"> <%= user.email %></h5>
+            <div class="flex gap-3 mt-10">
+              <a href="/edit/<%= user._id %>" class="text-zinc-200"> Edit User </a>
+              <a href="/delete/<%= user._id %>" class="text-red-500" > Delete User </a>
+            </div>
+          </div>
+
+      <% }) %>
+
+     <% } else { %>
+      <h3 class="text-zinc-500"> No Users Yet.</h3>
+      <% } %>
+    </div>
+  </div>
+  
+</body>
+</html>
